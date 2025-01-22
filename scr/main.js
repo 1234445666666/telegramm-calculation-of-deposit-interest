@@ -3,10 +3,18 @@ const { message } = require('telegraf/filters')
 
 const bot = new Telegraf('private_token')
 
-bot.start((ctx) => ctx.reply('Здравствуйте!Приветствую вас в моем боте!Здесь вы можете рассчитать проценты по вкладу.Чтобы начать введите /calculate'))
+bot.start((ctx) => ctx.reply('Здравствуйте!Приветствую вас в моем боте! Здесь вы можете рассчитать проценты по вкладу. Чтобы начать введите /menu'))
+
+bot.command('menu', ctx => {
+    ctx.reply('Выберите команду: /calculate , для подсчета процентов по вкладу. Так же по команде /web можно перейти на сайт по процентвов по вкладу.')
+})
 
 bot.command('calculate', ctx => {
     ctx.reply('Эта команда позволяет вам рассчитать проценты по вкладу. Введите сумму вклада и срок в днях и процентную ставку через пробел.')
+})
+
+bot.command('web', ctx => {
+    ctx.reply('https://1234445666666.github.io/website-calculation-of-deposit-interest/')
 })
 
 bot.on(message('text'), (ctx) => {
